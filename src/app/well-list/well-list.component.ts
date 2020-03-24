@@ -11,10 +11,15 @@ export class WellListComponent implements OnInit {
   showListVal = true;
   sourcekey = '10001';
   addWell = false;
+  dummyWells = [
+    { name: "well0", type: "rls", sourcekey: 10101 },
+    { name: "well1", type: "esp", sourcekey: 101011 }
+  ]
 
   constructor() { }
 
   ngOnInit() {
+    JSON.parse(localStorage.getItem('wells')) == null ? localStorage.setItem('wells', JSON.stringify(this.dummyWells)) : true;
     this.getWellsList();
   }
   
