@@ -1,0 +1,19 @@
+<app-well *ngIf="addWell || !showListVal" (showListEvent)="showList($event)" (newWellEvent)='getWellsList()' [sourcekey]="sourcekey"></app-well>
+<div *ngIf="!addWell || showListVal" class="container">
+    <div>
+        <h2>Wells' List</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of wells[0] | keys ">{{head | titlecase}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let well of wells">
+                    <td *ngFor="let key of wells[0] | keys" [ngClass]="{'bg-info' : well[key]=='rls', 'bg-warning' : well[key]=='esp'}" [ngStyle]="{'color': well[key]=='rls' ? 'red' : (well[key]=='esp' ? 'blue' : null)}" (click)="[key] == 'sourcekey' ? addWellEvent($event) : null" [attr.data-value]="[key] == 'sourcekey' ? well[key] : null">{{well[key]}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" (click)="addWellEvent($event)" class="btn btn-default">Add Well</button>
+    </div>
+</div>

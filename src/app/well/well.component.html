@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Add well</h2>
+    <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" formControlName="name" id="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" class="form-control" formControlName="type" id="type" placeholder="Type">
+        </div>
+        <div class="form-group">
+            <label for="sourcekey">Source Key</label>
+            <input type="text" readonly id="sourcekey" class="form-control" formControlName="sourcekey" placeholder="Source Key">
+        </div>
+        <button type="submit" class="btn btn-default">Add Well</button>
+        <button type="button" #showListBtn (click)="showList()" class="btn btn-default ml-1"></button>
+    </form>
+</div>

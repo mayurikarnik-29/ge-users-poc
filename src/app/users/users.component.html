@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Users Data</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th  *ngFor="let head of users[0] | keys ">{{head | titlecase}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td *ngFor="let key of users[0] | keys">{{user[key]}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="toggleHead">Toggle Content using ngIf</h2><button class="toggleBtn" (click)="ifcond = !ifcond">Toggle</button>
+    <div class="bg-info" *ngIf="ifcond; else elsecond">If condition content</div>
+    <ng-template #elsecond>
+        <div class="bg-info">Else condition content</div>
+    </ng-template>
+</div>
